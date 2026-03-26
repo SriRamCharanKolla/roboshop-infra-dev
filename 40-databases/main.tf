@@ -32,7 +32,7 @@ resource "terraform_data" "mongodb" {
   provisioner "remote-exec" {
     inline = [ 
         "chmod +X /tmp/bootstrap.sh",
-        "sudo sh /tmp/bootstrap.sh mongodb"
+        "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}" # to execute bootstrap.sh with mongodb argument
      ]
   }
 }
@@ -71,7 +71,7 @@ resource "terraform_data" "bootstrap_redis" {
   provisioner "remote-exec" {
     inline = [ 
         "chmod +X /tmp/bootstrap.sh", # chmod is to change mode, +X is used alog with chmod to provide execution permission to a file
-        "sudo sh /tmp/bootstrap.sh redis" # to execute bootstrap.sh with mongodb argument
+        "sudo sh /tmp/bootstrap.sh redis ${var.environment}" # to execute bootstrap.sh with redis argument
      ]
   }
 }
@@ -111,7 +111,7 @@ resource "terraform_data" "mysql" {
   provisioner "remote-exec" {
     inline = [ 
         "chmod +X /tmp/bootstrap.sh", # chmod is to change mode, +X is used alog with chmod to provide execution permission to a file
-        "sudo sh /tmp/bootstrap.sh mysql ${var.environment}" # to execute bootstrap.sh with mongodb argument
+        "sudo sh /tmp/bootstrap.sh mysql ${var.environment}" # to execute bootstrap.sh with mysql argument
      ]
   }
 }
@@ -150,7 +150,7 @@ resource "terraform_data" "rabbitmq" {
   provisioner "remote-exec" {
     inline = [ 
         "chmod +X /tmp/bootstrap.sh", # chmod is to change mode, +X is used alog with chmod to provide execution permission to a file
-        "sudo sh /tmp/bootstrap.sh mongodb" # to execute bootstrap.sh with mongodb argument
+        "sudo sh /tmp/bootstrap.sh rabbitmq ${var.environment}" # to execute bootstrap.sh with rabbitmq argument
      ]
   }
 }
