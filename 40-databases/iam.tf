@@ -29,7 +29,7 @@ resource "aws_iam_policy" "mysql" {
   name = local.mysql_policy_name
   description = "A policy for Mysql EC2 instance"
   policy = templatefile("mysql-iam-policy.json", {
-           environment = var.environment
+           environment = var.environment # This is used to replace the ${environment} variable in the mysql-iam-policy.json file with the value of var.environment variable defined in the variables.tf file. The templatefile function is used to read the content of the mysql-iam-policy.json file and replace the variables with the provided values.
   })
 }
 
