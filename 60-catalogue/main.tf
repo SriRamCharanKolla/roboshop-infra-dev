@@ -31,7 +31,7 @@ resource "terraform_data" "catalogue" {
 
   provisioner "remote-exec" {
     inline = [
-        "chmod +x /tmp/bootstrap.sh",
+        "chmod +x /tmp/bootstrap.sh", # providing execution mode bootstrap.sh script file
         "sudo sh /tmp/bootstrap.sh catalogue ${var.environment} ${var.app_version}" # ansible-playbook -e component=catalogue -e env=dev -e app_version=v3 roboshop.yaml
     ]
   }

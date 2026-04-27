@@ -15,7 +15,7 @@ resource "aws_cloudfront_distribution" "roboshop" {
   enabled             = true
   is_ipv6_enabled     = false
 
-  # CDN URL https://roboshop-dev.daws88s.online
+  # CDN URL https://roboshop-dev.aitechapp.fun
   aliases = ["${var.project}-${var.environment}.${var.domain_name}"]
 
   default_cache_behavior {
