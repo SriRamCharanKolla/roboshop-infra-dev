@@ -18,11 +18,21 @@ chown ec2-user:ec2-user -R roboshop-infra-dev # if running this script while pra
 cd roboshop-infra-dev/40-databases
 terraform init
 terraform apply -auto-approve
-
-# creating components
-cd /home/ec2-user
-git clone https://github.com/SriRamCharanKolla/roboshop-infra-dev.git
-chown ec2-user:ec2-user -R roboshop-infra-dev
-cd roboshop-infra-dev/90-components
+cd ../50-backend-alb
 terraform init
 terraform apply -auto-approve
+cd ../70-acm
+terraform init
+terraform apply -auto-approve
+cd ../80-frontend-alb
+terraform init
+terraform apply -auto-approve
+cd ../90-components
+terraform init
+terraform apply -auto-approve
+
+# creating components
+# cd /home/ec2-user
+# git clone https://github.com/SriRamCharanKolla/roboshop-infra-dev.git
+# chown ec2-user:ec2-user -R roboshop-infra-dev
+# cd roboshop-infra-dev/90-components
